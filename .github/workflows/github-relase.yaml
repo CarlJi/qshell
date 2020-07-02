@@ -9,13 +9,13 @@ jobs:
         steps:
         - uses: actions/checkout@master
         - name: Install Go
-        uses: actions/setup-go@v2
-        with:
+          uses: actions/setup-go@v2
+          with:
             go-version: 1.14.x
         - name: compile and release
-        run: |
+          run: |
             ./github-release.sh
-        env:
+          env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             GOARCH: amd64
             GOOS: linux
@@ -26,13 +26,13 @@ jobs:
         steps:
         - uses: actions/checkout@master
         - name: Install Go
-        uses: actions/setup-go@v2
-        with:
+          uses: actions/setup-go@v2
+          with:
             go-version: 1.14.x
         - name: compile and release
-        run: |
+          run: |
             ./github-release.sh
-        env:
+          env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             GOARCH: "386"
             GOOS: linux
@@ -43,61 +43,64 @@ jobs:
         steps:
         - uses: actions/checkout@master
         - name: Install Go
-        uses: actions/setup-go@v2
-        with:
+          uses: actions/setup-go@v2
+          with:
             go-version: 1.14.x
         - name: compile and release
-        run: |
+          run: |
             ./github-release.sh
-        env:
+          env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             GOARCH: amd64
             GOOS: darwin
+
     release-windows-amd64:
         name: release windows/amd64
         runs-on: windows-latest
         steps:
         - uses: actions/checkout@master
         - name: Install Go
-        uses: actions/setup-go@v2
-        with:
+          uses: actions/setup-go@v2
+          with:
             go-version: 1.14.x
         - name: compile and release
-        run: |
+          run: |
             ./github-release.sh
-        env:
+          env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             GOARCH: amd64
             GOOS: windows    
+
     release-windows-386:
         name: release windows/386
         runs-on: windows-latest
         steps:
         - uses: actions/checkout@master
         - name: Install Go
-        uses: actions/setup-go@v2
-        with:
+          uses: actions/setup-go@v2
+          with:
             go-version: 1.14.x
         - name: compile and release
-        run: |
+          run: |
             ./github-release.sh
-        env:
+          env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             GOARCH: 386
             GOOS: windows                  
+
     release-linux-arm:
         name: release windows/386
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@master
         - name: Install Go
-        uses: actions/setup-go@v2
-        with:
+          uses: actions/setup-go@v2
+          with:
             go-version: 1.14.x
         - name: compile and release
-        run: |
+          run: |
             ./github-release.sh
-        env:
+          env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             GOARCH: arm
             GOOS: linux            
