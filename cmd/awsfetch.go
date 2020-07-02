@@ -10,7 +10,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
-	"github.com/qiniu/qshell/iqshell"
+	"github.com/qiniu/qshell/v2/iqshell"
 	"github.com/spf13/cobra"
 )
 
@@ -77,7 +77,7 @@ func (lo *awslistOptions) Run(cmd *cobra.Command, positionalArgs []string) {
 				// Message from an error.
 				fmt.Fprintln(os.Stderr, err.Error())
 			}
-			fmt.Fprintf(os.Stderr, "ContinuationToken: %s\n", input.ContinuationToken)
+			fmt.Fprintf(os.Stderr, "ContinuationToken: %v\n", input.ContinuationToken)
 			os.Exit(1)
 		}
 		for _, obj := range result.Contents {
@@ -166,7 +166,7 @@ func (o *awsfetchOptions) Run(cmd *cobra.Command, positionalArgs []string) {
 				fmt.Fprintln(os.Stderr, err.Error())
 			}
 			close(itemc)
-			fmt.Fprintf(os.Stderr, "ContinuationToken: %s\n", input.ContinuationToken)
+			fmt.Fprintf(os.Stderr, "ContinuationToken: %v\n", input.ContinuationToken)
 			os.Exit(1)
 		}
 		for _, obj := range result.Contents {

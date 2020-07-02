@@ -1,6 +1,11 @@
 # qshell
 
+[![LICENSE](https://img.shields.io/github/license/qiniu/qshell.svg)](https://github.com/qiniu/qshell/blob/master/LICENSE)
 [![Go Report Card](https://goreportcard.com/badge/github.com/qiniu/qshell)](https://goreportcard.com/report/github.com/qiniu/qshell)
+[![codecov](https://codecov.io/gh/qiniu/qshell/branch/master/graph/badge.svg)](https://codecov.io/gh/qiniu/qshell)
+![](https://github.com/qiniu/qshell/workflows/ut-check/badge.svg)
+[![GitHub release](https://img.shields.io/github/v/tag/qiniu/qshell.svg?label=release)](https://github.com/qiniu/qshell/releases)
+[![GoDoc](https://img.shields.io/badge/Godoc-reference-blue.svg)](https://pkg.go.dev/github.com/qiniu/qshell)
 
 ## 简介
 
@@ -14,12 +19,12 @@ qshell是利用[七牛文档上公开的API](http://developer.qiniu.com)实现�
 
 |版本     |支持平台|链接|
 |--------|---------|----|
-|qshell v2.4.1|Windows X86|[下载](http://devtools.qiniu.com/qshell-windows-x86-v2.4.1.exe.zip)
-|qshell v2.4.1|Windows amd64|[下载](http://devtools.qiniu.com/qshell-windows-x64-v2.4.1.exe.zip)
-|qshell v2.4.1|Linux X86|[下载](http://devtools.qiniu.com/qshell-linux-x86-v2.4.1.zip)
-|qshell v2.4.1|Linux amd64|[下载](http://devtools.qiniu.com/qshell-linux-x64-v2.4.1.zip)
-|qshell v2.4.1|Linux Arm|[下载](http://devtools.qiniu.com/qshell-linux-arm-v2.4.1.zip)
-|qshell v2.4.1|Mac OS |[下载](http://devtools.qiniu.com/qshell-darwin-x64-v2.4.1.zip)
+|qshell v2.4.2|Windows X86|[下载](http://devtools.qiniu.com/qshell-windows-x86-v2.4.2.exe.zip)
+|qshell v2.4.2|Windows amd64|[下载](http://devtools.qiniu.com/qshell-windows-x64-v2.4.2.exe.zip)
+|qshell v2.4.2|Linux X86|[下载](http://devtools.qiniu.com/qshell-linux-x86-v2.4.2.zip)
+|qshell v2.4.2|Linux amd64|[下载](http://devtools.qiniu.com/qshell-linux-x64-v2.4.2.zip)
+|qshell v2.4.2|Linux Arm|[下载](http://devtools.qiniu.com/qshell-linux-arm-v2.4.2.zip)
+|qshell v2.4.2|Mac OS |[下载](http://devtools.qiniu.com/qshell-darwin-x64-v2.4.2.zip)
 
 ## 安装
 
