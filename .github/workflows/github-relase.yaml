@@ -89,7 +89,7 @@ jobs:
             GOOS: windows                  
 
     release-linux-arm:
-        name: release windows/386
+        name: release linux/arm
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@master
