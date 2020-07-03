@@ -14,12 +14,18 @@ all: linux windows arm darwin
 darwin:
 	@GOOS=darwin GOARCH=amd64 $(GO) build -ldflags  $(LDFLAGS) -o $(DARWIN)
 	@zip $(DARWIN).zip $(DARWIN)
+	ifeq ($(GITHUB_ACTIONS),true)
+		./github-release.sh $(DARWIN) $(DARWIN).zip
+	endif
 
 linux:
 	@CGO_ENABLED=0 GOOS=linux GOARCH=386 $(GO) build -ldflags  $(LDFLAGS) -o $(LINUX86) .
 	@CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GO) build -ldflags $(LDFLAGS) -o $(LINUX64) .
 	@zip $(LINUX86).zip $(LINUX86)
 	@zip $(LINUX64).zip $(LINUX64)
+	ifeq ($(GITHUB_ACTIONS),true)
+		./github-release.sh $(LINUX86) $(LINUX86).zip
+	endif
 
 windows:
 	@CGO_ENABLED=0 GOOS=windows GOARCH=386 $(GO) build -ldflags $(LDFLAGS) -o $(WIN86) .
