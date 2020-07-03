@@ -1,6 +1,8 @@
 on: 
     release:
         types: [published,edited]
+env:
+  CGO_ENABLED: 0
 
 name: Release qshell
 jobs:
@@ -19,10 +21,6 @@ jobs:
             goos: darwin         
     steps:
     - uses: actions/checkout@v2
-    - name: Install Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: 1.14.x  
     - name: Set APP_VERSION env
       run: echo ::set-env name=APP_VERSION::$(cat ${GITHUB_EVENT_PATH} | jq -r .release.tag_name )
     - name: Environment Printer
@@ -33,5 +31,5 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         goos: ${{ matrix.goos }}
         goarch: ${{ matrix.goarch }}
-        binary_name: "qshell"
+        goversion: "https://golang.org/dl/go1.14.4.linux-amd64.tar.gz"
         ldflags: -X "github.com/qiniu/qshell/v2/cmd.version=${{ env.APP_VERSION }}" -extldflags "-static"
