@@ -2,29 +2,24 @@
 
 set -eux
 
+NAME=$1
+ARCHIVE=$2
+echo "upload file to github: $NAME"
+
 EVENT_DATA=$(cat $GITHUB_EVENT_PATH)
-echo $EVENT_DATA | jq .
 UPLOAD_URL=$(echo $EVENT_DATA | jq -r .release.upload_url)
 UPLOAD_URL=${UPLOAD_URL/\{?name,label\}/}
-RELEASE_NAME=$(echo $EVENT_DATA | jq -r .release.tag_name)
-PROJECT_NAME=$(basename $GITHUB_REPOSITORY)
-NAME="${NAME:-${PROJECT_NAME}-${RELEASE_NAME}}-${GOOS}-${GOARCH}"
+# RELEASE_VERSION=$(echo $EVENT_DATA | jq -r .release.tag_name)
+# PROJECT_NAME=$(basename $GITHUB_REPOSITORY)
 
-LDFLAGS="-X 'github.com/qiniu/qshell/v2/cmd.version=${RELEASE_NAME}' -extldflags '-static'"
-CGO_ENABLED=0 go build -ldflags $LDFLAGS .
-
-ARCHIVE=tmp.tar.gz
-FILE_LIST=qshell
-tar cvfz $ARCHIVE ${FILE_LIST}
-
-CHECKSUM=$(md5sum ${ARCHIVE} | cut -d ' ' -f 1)
+CHECKSUM=$(md5sum ${NAME} | cut -d ' ' -f 1)
 
 curl \
   -X POST \
   --data-binary @${ARCHIVE} \
   -H 'Content-Type: application/octet-stream' \
   -H "Authorization: Bearer ${GITHUB_TOKEN}" \
-  "${UPLOAD_URL}?name=${NAME}.${ARCHIVE/tmp./}"
+  "${UPLOAD_URL}?name=${ARCHIVE}"
 
 curl \
   -X POST \
